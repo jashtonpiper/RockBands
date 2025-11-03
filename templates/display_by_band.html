@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bands</h2>
+
+{% for band in bands %}
+<section>
+    <h3>{{ band.BandName }} ({{ band.FormedYear }})</h3>
+    <p><strong>Home:</strong> {{ band.HomeLocation }}</p>
+
+    <h4>Members</h4>
+    <ul>
+        {% for member in band.members %}
+        <li>{{ member.MemberName }} – {{ member.MainPosition }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Albums</h4>
+    <ul>
+        {% for album in band.albums %}
+        <li>{{ album.AlbumTitle }} ({{ album.ReleaseYear }})</li>
+        {% endfor %}
+    </ul>
+</section>
+<hr>
+{% endfor %}
+{% endblock %}
