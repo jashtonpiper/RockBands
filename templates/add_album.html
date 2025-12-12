@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Add Album</h2>
-<form method="post">
-    <label>Album Title:</label><input type="text" name="albumtitle"><br>
-    <label>Release Year:</label><input type="number" name="releaseyear"><br>
-
-    <label>Band:</label>
-    <select name="bandid">
-        {% for band in bands %}
-        <option value="{{ band.BandID }}">{{ band.BandName }}</option>
-        {% endfor %}
-    </select><br>
-
-    <button type="submit">Save</button>
+<form method="POST">
+    <label for="albumtitle">Album Title:</label>
+    <input type="text" name="albumtitle" required><br>
+    
+    <label for="releaseyear">Release Year:</label>
+    <input type="number" name="releaseyear"><br>
+    
+    <label>Bands :</label><br>
+    {% for band in bands %}
+        <input type="checkbox" name="bandids" value="{{ band.BandID }}" id="band{{ band.BandID }}">
+        <label for="band{{ band.BandID }}">{{ band.BandName }}</label><br>
+    {% endfor %}
+    
+    <button type="submit">Add Album</button>
 </form>
 {% endblock %}

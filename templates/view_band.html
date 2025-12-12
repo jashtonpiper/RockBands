@@ -1,0 +1,19 @@
+<h2>{{ band.BandName }}</h2>
+<p>Formed: {{ band.FormedYear }}</p>
+<p>Location: {{ band.HomeLocation }}</p>
+
+<h3>Albums</h3>
+<ul>
+{% for album in band.albums %}
+    <li>
+        {{ album.AlbumTitle }} ({{ album.ReleaseYear }})
+        {% if album.bands|length > 1 %}
+            <em>Collaboration with: 
+            {% for collab_band in album.bands if collab_band.BandID != band.BandID %}
+                {{ collab_band.BandName }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </em>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>

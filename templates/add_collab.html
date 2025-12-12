@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Collaboration</h2>
+<form method="post">
+    <label>Collaboration Name:</label><input type="text" name="collabname"><br>
+    <label>Year:</label><input type="number" name="year"><br>
+
+    <label>Artists:</label>
+    <select name="artistid">
+        {% for artist in artists %}
+        <option value="{{ artist.ArtistID }}">{{ artist.ArtistName }}</option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
